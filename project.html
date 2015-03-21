@@ -61,15 +61,20 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 
 <div id="background" class="section level4">
 <h4>Background</h4>
-<p>The data set records the accelerometer data for 6 participants who were asked to perform one set of 10 repetitions of the Unilateral Dumbbell Biceps Curl in five different manner. This is the “classe” variable in the training set.</p>
+<p>Using devices such as Jawbone Up, Nike FuelBand, and Fitbit it is now possible to collect a large amount of data about personal activity relatively inexpensively. These type of devices are part of the quantified self movement – a group of enthusiasts who take measurements about themselves regularly to improve their health, to find patterns in their behavior, or because they are tech geeks. One thing that people regularly do is quantify how much of a particular activity they do, but they rarely quantify how well they do it.</p>
+<p>The data set provided as part of the project exercise contains the accelerometer data for 6 participants who were asked to perform one set of 10 repetitions of the Unilateral Dumbbell Biceps Curl in five different manner. This is the “classe” variable in the training set.</p>
 <ul>
 <li>Class A : exactly according to the specification</li>
 <li>Class B : throwing the elbows to the front</li>
 <li>Class C : lifting the dumbbell only halfway</li>
 <li>Class D : lowering the dumbbell only halfway</li>
-<li>Class E : throwing the hips to the front (Source : <a href="http://groupware.les.inf.puc-rio.br/har#ixzz3UqHfAAqq">http://groupware.les.inf.puc-rio.br/har#ixzz3UqHfAAqq</a>)</li>
+<li>Class E : throwing the hips to the front</li>
 </ul>
-<p>The goal of this project t is to predict the manner in which a user did the exercise(classe) for a given test set.</p>
+<p>More information is available from the website here: <a href="http://groupware.les.inf.puc-rio.br/har">http://groupware.les.inf.puc-rio.br/har</a> (see the section on the Weight Lifting Exercise Dataset).</p>
+<p>The goal of this project is to predict the manner in which a user did the exercise( Predict the “classe” variable).</p>
+</div>
+<div id="load-clean-data." class="section level4">
+<h4>Load &amp; Clean Data.</h4>
 <pre class="r"><code>library(caret)</code></pre>
 <pre><code>## Loading required package: lattice
 ## Loading required package: ggplot2</code></pre>
@@ -81,9 +86,6 @@ library(ggplot2)
 library(corrplot)
 library(gridExtra)</code></pre>
 <pre><code>## Loading required package: grid</code></pre>
-</div>
-<div id="load-clean-data." class="section level4">
-<h4>Load &amp; Clean Data.</h4>
 <ol style="list-style-type: decimal">
 <li>Load Data</li>
 </ol>
