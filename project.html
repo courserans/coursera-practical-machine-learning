@@ -142,7 +142,7 @@ model$finalModel</code></pre>
 <div id="model-results" class="section level4">
 <h4>Model Results</h4>
 <pre class="r"><code>hat.testing &lt;- predict(model,testing)
-accuracy &lt;- round(postResample(hat.testing, testing$classe)[1]*100,4)
+accuracy &lt;- round(confusionMatrix(testing$classe, hat.testing)$overall[1]*100,4)
 error &lt;- round((1 - as.numeric(confusionMatrix(testing$classe, hat.testing)$overall[1]))*100,4)</code></pre>
 <ol style="list-style-type: decimal">
 <li>Fig 3 left panel of the plot lists the top 20 important features of the model. The roll_belt is the most important variable.</li>

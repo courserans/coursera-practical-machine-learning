@@ -72,7 +72,7 @@ model$finalModel
 #### Model Results
 ```{r}
 hat.testing <- predict(model,testing)
-accuracy <- round(postResample(hat.testing, testing$classe)[1]*100,4)
+accuracy <- round(confusionMatrix(testing$classe, hat.testing)$overall[1]*100,4)
 error <- round((1 - as.numeric(confusionMatrix(testing$classe, hat.testing)$overall[1]))*100,4)
 ```
 1. Fig 3 left panel of the plot lists the top 20 important features of the model. The roll_belt is the most important variable.
