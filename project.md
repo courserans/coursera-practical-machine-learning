@@ -4,8 +4,6 @@ March 19, 2015
 
 #### Background
 
-Using devices such as Jawbone Up, Nike FuelBand, and Fitbit it is now possible to collect a large amount of data about personal activity relatively inexpensively. These type of devices are part of the quantified self movement – a group of enthusiasts who take measurements about themselves regularly to improve their health, to find patterns in their behavior, or because they are tech geeks. One thing that people regularly do is quantify how much of a particular activity they do, but they rarely quantify how well they do it. 
-
 The data set provided as part of the project exercise contains the accelerometer data for 6 participants who were asked to perform one set of 10 repetitions of the Unilateral Dumbbell Biceps Curl in five different manner. This is the "classe" variable in the training set.
 
 - Class A : exactly according to the specification 
@@ -37,17 +35,6 @@ library(randomForest)
 ```
 ## randomForest 4.6-10
 ## Type rfNews() to see new features/changes/bug fixes.
-```
-
-```r
-library(plyr)
-library(ggplot2)
-library(corrplot)
-library(gridExtra)
-```
-
-```
-## Loading required package: grid
 ```
 
 1. Load Data
@@ -150,12 +137,23 @@ hat.predict
 ##  [1] B A B A A E D B A A B C B A E E A B B B
 ## Levels: A B C D E
 ```
-Submit the files to coursera as per code block 1 from appendix.
+The results were submitted to coursera as per code block 1 from appendix.
 
 #### Appendix
 
 Fig 1. User by Classe
 
+
+```r
+library(plyr)
+library(ggplot2)
+library(corrplot)
+library(gridExtra)
+```
+
+```
+## Loading required package: grid
+```
 
 ```r
 dat1 <- ddply(train.raw,.(classe,user_name),summarise,count=length(classe))

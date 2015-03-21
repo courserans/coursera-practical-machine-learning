@@ -9,8 +9,6 @@ output:
 
 #### Background
 
-Using devices such as Jawbone Up, Nike FuelBand, and Fitbit it is now possible to collect a large amount of data about personal activity relatively inexpensively. These type of devices are part of the quantified self movement – a group of enthusiasts who take measurements about themselves regularly to improve their health, to find patterns in their behavior, or because they are tech geeks. One thing that people regularly do is quantify how much of a particular activity they do, but they rarely quantify how well they do it. 
-
 The data set provided as part of the project exercise contains the accelerometer data for 6 participants who were asked to perform one set of 10 repetitions of the Unilateral Dumbbell Biceps Curl in five different manner. This is the "classe" variable in the training set.
 
 - Class A : exactly according to the specification 
@@ -28,10 +26,6 @@ The goal of this project is to predict the manner in which a user did the exerci
 ```{r, warning=FALSE}
 library(caret)
 library(randomForest)
-library(plyr)
-library(ggplot2)
-library(corrplot)
-library(gridExtra)
 ```
 
 1. Load Data
@@ -91,13 +85,17 @@ error <- round((1 - as.numeric(confusionMatrix(testing$classe, hat.testing)$over
 hat.predict <- predict(model,test.raw)
 hat.predict
 ```
-Submit the files to coursera as per code block 1 from appendix.
+The results were submitted to coursera as per code block 1 from appendix.
 
 #### Appendix
 
 Fig 1. User by Classe
 
 ```{r, fig.align='center', fig.width=5, fig.height=4}
+library(plyr)
+library(ggplot2)
+library(corrplot)
+library(gridExtra)
 dat1 <- ddply(train.raw,.(classe,user_name),summarise,count=length(classe))
 g1 <- ggplot(dat1,aes(x=factor(user_name),y=count, fill=classe)) + 
         geom_bar(stat="identity") + 

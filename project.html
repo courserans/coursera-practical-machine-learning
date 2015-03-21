@@ -61,7 +61,6 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 
 <div id="background" class="section level4">
 <h4>Background</h4>
-<p>Using devices such as Jawbone Up, Nike FuelBand, and Fitbit it is now possible to collect a large amount of data about personal activity relatively inexpensively. These type of devices are part of the quantified self movement – a group of enthusiasts who take measurements about themselves regularly to improve their health, to find patterns in their behavior, or because they are tech geeks. One thing that people regularly do is quantify how much of a particular activity they do, but they rarely quantify how well they do it.</p>
 <p>The data set provided as part of the project exercise contains the accelerometer data for 6 participants who were asked to perform one set of 10 repetitions of the Unilateral Dumbbell Biceps Curl in five different manner. This is the “classe” variable in the training set.</p>
 <ul>
 <li>Class A : exactly according to the specification</li>
@@ -81,11 +80,6 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <pre class="r"><code>library(randomForest)</code></pre>
 <pre><code>## randomForest 4.6-10
 ## Type rfNews() to see new features/changes/bug fixes.</code></pre>
-<pre class="r"><code>library(plyr)
-library(ggplot2)
-library(corrplot)
-library(gridExtra)</code></pre>
-<pre><code>## Loading required package: grid</code></pre>
 <ol style="list-style-type: decimal">
 <li>Load Data</li>
 </ol>
@@ -162,11 +156,16 @@ error &lt;- round((1 - as.numeric(confusionMatrix(testing$classe, hat.testing)$o
 hat.predict</code></pre>
 <pre><code>##  [1] B A B A A E D B A A B C B A E E A B B B
 ## Levels: A B C D E</code></pre>
-<p>Submit the files to coursera as per code block 1 from appendix.</p>
+<p>The results were submitted to coursera as per code block 1 from appendix.</p>
 </div>
 <div id="appendix" class="section level4">
 <h4>Appendix</h4>
 <p>Fig 1. User by Classe</p>
+<pre class="r"><code>library(plyr)
+library(ggplot2)
+library(corrplot)
+library(gridExtra)</code></pre>
+<pre><code>## Loading required package: grid</code></pre>
 <pre class="r"><code>dat1 &lt;- ddply(train.raw,.(classe,user_name),summarise,count=length(classe))
 g1 &lt;- ggplot(dat1,aes(x=factor(user_name),y=count, fill=classe)) + 
         geom_bar(stat=&quot;identity&quot;) + 
